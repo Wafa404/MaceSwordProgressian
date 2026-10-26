@@ -1,0 +1,5 @@
+name: MaceSwordProgression
+version: 1.0.0
+main: com.osman.macesword.MaceSwordProgression
+api-version: '1.21'
+description: Kill-based sword and mace progression

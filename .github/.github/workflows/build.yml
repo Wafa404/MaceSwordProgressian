@@ -1,1 +1,29 @@
+name: Build Minecraft Plugin
 
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project files
+        uses: actions/checkout@v4
+
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build plugin
+        run: mvn --batch-mode clean package
+
+      - name: Save plugin JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: MaceSwordProgression
+          path: target/*.jar
